@@ -17,6 +17,7 @@ import com.bcebhagalpur.welcomeslider.teacher.dashboard.activity.HomeTeacher
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import com.google.firebase.iid.FirebaseInstanceId
 import kotlinx.android.synthetic.main.activity_teacher_registration3.*
 import java.util.*
 
@@ -44,6 +45,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDatabaseReference: DatabaseReference
     private lateinit var mDatabase: FirebaseDatabase
+    var token="null"
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -290,6 +292,13 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
 //            val currentUserDb2 = classFilter.child(txtSelectClass.text.toString())
             mAuth = FirebaseAuth.getInstance()
             val userId = mAuth.currentUser!!.uid
+            if (mAuth.currentUser!=null){
+                FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener { task->
+                    if (task.isSuccessful){
+                        token=task.result.token
+                    }
+                }
+            }
             val userNumber = mAuth.currentUser!!.phoneNumber
 
             classFilter.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -307,6 +316,7 @@ class TeacherRegistrationActivity3 : AppCompatActivity() {
                     anotherChild.child("qualification")
                         .setValue(actxtQualification.text.toString())
                     anotherChild.child("status").setValue(actxtStatus.text.toString())
+                    anotherChild.child("teacherToken").setValue(token)
                     anotherChild.child("language").setValue(actxtLanguage.text.toString())
                     anotherChild.child("college").setValue(actxtCollege.text.toString())
                     anotherChild.child("mode").setValue(actxtMode.text.toString())

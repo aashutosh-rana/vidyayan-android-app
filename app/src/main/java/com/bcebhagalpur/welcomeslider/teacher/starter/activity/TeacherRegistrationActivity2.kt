@@ -29,6 +29,7 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class TeacherRegistrationActivity2 : AppCompatActivity() {
+
     var formate = SimpleDateFormat("dd,mm,yyyy", Locale.US)
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var locationRequest: LocationRequest

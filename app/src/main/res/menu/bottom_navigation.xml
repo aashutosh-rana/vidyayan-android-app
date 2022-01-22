@@ -6,7 +6,7 @@
         android:icon="@drawable/ic_action_explore"/>
     <item
         android:id="@+id/study"
-        android:title="Study"
+        android:title="@string/study"
         android:icon="@drawable/ic_baseline_file_copy_24"/>
     <item
         android:id="@+id/student"

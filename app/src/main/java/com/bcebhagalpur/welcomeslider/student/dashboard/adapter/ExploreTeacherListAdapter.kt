@@ -2,23 +2,14 @@
 @file:Suppress("DEPRECATION")
 
 package com.bcebhagalpur.welcomeslider.student.dashboard.adapter
-
-import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.AuthFailureError
-import com.android.volley.Request
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.toolbox.JsonObjectRequest
-import com.android.volley.toolbox.Volley
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.TeacherDemoVideoActivity
 import com.bcebhagalpur.welcomeslider.student.dashboard.activity.TeacherDetailActivity
@@ -30,13 +21,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.squareup.picasso.Picasso
-import org.json.JSONException
-import org.json.JSONObject
+import fcm.androidtoandroid.FirebasePush
+import fcm.androidtoandroid.model.Notification
 
 @Suppress("DEPRECATION")
 class ExploreTeacherListAdapter(
     private val context: Context,
     private val itemList: ArrayList<ExploreTeacherListModel>
+
 ) : RecyclerView.Adapter<ExploreTeacherListAdapter.StatusViewHolder>() {
 
 
@@ -180,6 +172,7 @@ class ExploreTeacherListAdapter(
                                                             "Request sent successfully...",
                                                             Snackbar.LENGTH_LONG
                                                         ).show()
+                                                        Toast.makeText(context,subject.teacherToken.toString(),Toast.LENGTH_SHORT).show()
 
                                                     }
 

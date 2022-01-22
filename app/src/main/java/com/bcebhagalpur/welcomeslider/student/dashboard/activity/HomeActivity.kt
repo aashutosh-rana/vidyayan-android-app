@@ -22,6 +22,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.bcebhagalpur.welcomeslider.R
 import com.bcebhagalpur.welcomeslider.activity.ChatExploreActivity
 import com.bcebhagalpur.welcomeslider.activity.LoginActivity
+import com.bcebhagalpur.welcomeslider.activity.StudentProgressActivity
 import com.bcebhagalpur.welcomeslider.activity.VidyayanChatingActivity
 import com.bcebhagalpur.welcomeslider.bodyfragment.*
 import com.bcebhagalpur.welcomeslider.student.dashboard.fragment.ExploreFragment
@@ -347,6 +348,9 @@ private fun onAddButtonClicked()
         rl.setOnClickListener {
 
             startActivity(Intent(this, StudentProfileActivity::class.java))
+        }
+        rl2.setOnClickListener {
+            startActivity(Intent(this,StudentProgressActivity::class.java))
         }
         rl3.setOnClickListener {
             startActivity(Intent(this, MyCoursesActivity::class.java))
